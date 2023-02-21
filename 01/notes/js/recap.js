@@ -56,3 +56,26 @@ function getPassingTests(grades)
 
 console.log(getPassingTests(data)); 
 //-> [{"id":1,"grade":10}, {"id":3,"grade":18}]
+
+/*
+* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+* Object
+*/
+
+// Declaring Object
+var objectName = 
+{
+    propertyName: 'string',
+    propertyName: 0,
+
+    methodName: function() 
+    {
+        return this.propertyName;
+    }
+}
+
+// Calling Object + Method || Property
+var varName = objectName.propertyName;
+var varName = objectName.methodName();
+
+var varName = objectName['propertyName'];
