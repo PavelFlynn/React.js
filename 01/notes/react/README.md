@@ -60,3 +60,43 @@ element.className = 'container center';
 
 ##### className not class
 Changing element's class happens through the `className` property and not the `class`. Because `class` is a JS keyword reserved and is used for creating a JS class, called by `new`.
+
+#### React.createElement
+* You dont use `document.createElement();` in react.
+* In React, an Element is the smallest building block.
+
+##### Comparison
+`document.createElement()` returns a DOM element, whereas `React.createElement` returns an object that represents a DOM element (because operates a Virtual DOM) and allows React to perform performance optimizations.
+```javascript
+const element = React.createElement('h1');
+/*
+    returns an object similar to:
+    {
+        type: 'h1',
+        props: {}
+    }
+*/
+```
+A Virtual DOM is when a representation of the UI is kept in memory and sycend with the DOM.
+```javascript
+React.createElement('h1', {className: 'center', style: 'color: red'})
+```
+
+##### Writing Text
+To wirte text inside the element, you need to provide a 3rd parameter for `React.createElement()` called `children`.
+```javascript
+React.createElement('h1', {}, 'Hello World');
+// or
+React.createElement('h1', null, 'Hello World');
+```
+
+#### React Native
+Is the glue between React and native apps. React is the library that lets you write reusable UI and:
+* ReactDOM makes UI visible in browser.
+* React Native makes UI visible in a native app.
+* ReactDOM binds the idea of React to a web browser (Chrome, safari, Firefox, etc.).
+* React Native binds the idea of React to a native app (Native Android, Native iOS).
+
+##### Reconciliation
+React is creating the virtual representation of your UI in the memory, and then ReactDOM receives that and syncs your UI (and the changes to it) to the DOM. This process is called reconciliation.
+
