@@ -176,3 +176,79 @@ function getLoginStatus(is_loggedin) {
     }
 }
 ```
+
+### JSX Expressions
+Is any valid JS code that resolves to a value. For example:
+* 3 + 4 resolves to 7.
+* "Sam" resolves to string.
+* new Date() resolves to a date object.
+* 2 * 4 resolves to 8
+* name [assuming the var `name` has been declared] resolves to the value of that var.
+
+In JSX your can use these expressions by wrapping them with curly brackets `{ }`:
+```javascript
+const title = <h1>Your have {2+3} notifications</h1>;
+```
+#### Variables
+```javascript
+const user = {
+    id: 1,
+    name: 'Sam'
+}
+
+const element = <p className='user-info'>Welcome {user.name}!</p>;
+```
+#### Functions
+```javascript
+function capitalise(word) {
+    return word[0].toUpperCase() + word.substring(1).toLowerCase();
+}
+const name = "brendan";
+
+const element = <p className="user-info">Welcome {capitalise(name)}</p>
+```
+
+#### Attributes Expresions
+The value of the attribute will be based on an expression (or most often a variable):
+```javascript
+const limit = 5;
+const element = <input type="number" max={limit} />
+// DO NOT use quotes and curly braces:
+const element = <input type="number" max="{limit}" /> // DON'T!
+```
+The rule is:
+* If the value is a string -> wrap it with quotes `''` or `""`.
+* If the value is dynamic (result of an expression) -> wrap it with curly braces `{}`. 
+
+#### Numbers and Booleans
+Number and Booleans attribute values should be passed as an expression:
+```javascript
+</input max={2} disabled={true} className="textbox" />
+```
+
+#### Attributes Expresions II
+When one of your attributes is partially dynamic, you will have to treat it as if it was entirely dynamic.
+```html
+<li id="item-1"></li>
+<li id="item-2"></li>
+<li id="item-3"></li>
+```
+Using string concatenation:
+```javascript
+<li id={"item-" + count}></li>
+```
+Using template strings
+```javascript
+<li id={`item- + ${count}`}></li>
+```
+
+#### Multiple classes
+Use case:
+```javascript
+const clickable = 'clickable';
+const active = 'active';
+
+const button = <button className={clickable + ' ' + active}>Click me</button>
+// or
+const button = <button className={`${clickable} ${active}`}>Click me</button>
+````
