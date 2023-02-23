@@ -239,7 +239,7 @@ Using string concatenation:
 ```
 Using template strings
 ```javascript
-<li id={`item- + ${count}`}></li>
+<li id={`item-${count}`}></li>
 ```
 
 #### Multiple classes
@@ -418,3 +418,94 @@ const root = document.querySelector("#root");
 createRoot(root).render(<App />);
 ```
 
+### Props
+```javascript
+// GreetUser.js
+export default function GreetUser(props) {
+    console.log(props); // {user: "Sam"}
+    return <div>Welcome {props.user}</div>;
+}
+```
+#### Children props
+`props` represent attributes on a Component.
+```javascript
+const element = <HeroTitle>Welcome!</HeroTitle>
+```
+access with `props.children`:
+```javascript
+function HeroTitle(props) {
+    return <h1 className="hero">{props.children}</h1>;
+}
+```
+Another example:
+```javascript
+function Navbar(props){
+    return <div className="navbar">{props.children}</div>;
+}
+
+const element = <Navbar>
+    <HeroTitle>Welcome!</HeroTitle>
+    <div>Some content</div>
+    <p>Another content</p>
+</Navbar>;
+```
+
+### Destructuring
+Recap:
+```javascript
+const person = {
+    firstName: 'Sam',
+    lastName: 'Doe',
+    age: 24
+}
+```
+Split name in 2 variables, using destructuring.
+```javascript
+const {firstName} {lastName} = person;
+```
+You could also provide a default value for a variable, in case it did not exist in the object.
+```javascript
+const {firstName, lastName, status = 'single'} = person;
+// status doesn't exist in person Object.
+```
+
+#### Destructuring props
+Before destructuring.
+```javascript
+function WelcomeUser(props) {
+    const username = props.username;
+    const notifications = props.notifications;
+
+    return <div>Welcome {username}! You've got {notifications} unread notifications.</div>;
+}
+```
+After destructuring.
+```javascript
+function WelcomeUser(props) {
+    const {username, notifications} = props;
+
+    return <div>Welcome {username}! You've got {notifications} unread notifications.</div>;
+}
+```
+
+#### Destructuring in the argument
+```javascript
+function WelcomeUser({username, notifications}) {
+    return <div>Welcome {username}! You've got {notifications} unread notifications.</div>;
+}
+```
+
+Exercise:
+```javascript
+import {createRoot} from 'react-dom/client';
+
+function Button(props){
+    const {className, children} = props;
+    return <button className={className}>{children}</button>;
+}
+
+const root = document.querySelector('#react-root');
+createRoot(root).render(<Button className="primary">Login</Button>);
+```
+
+.
