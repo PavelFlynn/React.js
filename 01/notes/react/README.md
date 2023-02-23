@@ -251,4 +251,53 @@ const active = 'active';
 const button = <button className={clickable + ' ' + active}>Click me</button>
 // or
 const button = <button className={`${clickable} ${active}`}>Click me</button>
-````
+```
+
+### JSX Children
+HTML advanced elements:
+```html
+<ul>
+    <li>First item</li>
+    <li>Second item</li>
+    <li>Third item</li>
+</ul>
+```
+In JSX can be represented like:
+```javascript
+const list = <ul>
+    <li>First item</li>
+    <li>Second item</li>
+    <li>Third item</li>
+</ul>;
+```
+Gotchas:
+```javascript
+function getList() {
+    return 
+        <ul>
+            <li>First Item</li>
+            <li>Second Item</li>
+        </ul>;
+}
+```
+But this will break your code because of a JavaScript concept called Automatic Semi-colon Insertion (ASI). JS will automatically insert a semi-colon after `return` when it gets transformed from JSX to JS.
+To avoid this issue, wrap JSX elements with parentheses:
+```javascript
+function getList() {
+    return (
+        <ul>
+            <li>First Item</li>
+            <li>Second Item</li>
+        </ul>
+    );
+}
+```
+
+#### Self Closing Tags
+Common self-closing tags:
+* img
+* br (line break)
+* hr (horizontal rule)
+* input
+In JSX you can not open an element without closing it. Is recommended to use the selg-closing tag syntax
+
