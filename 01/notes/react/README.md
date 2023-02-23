@@ -508,4 +508,16 @@ const root = document.querySelector('#react-root');
 createRoot(root).render(<Button className="primary">Login</Button>);
 ```
 
-.
+### UI Kit
+A UI Kit is a collection of all the design elements that you will use in your app:
+* Buttons
+* Text Boxes
+* Cards
+
+Benefits:
+* Maintain consistency: all the buttons will look the same (we can also create two types of buttons: primary and secondary).
+* Update UI elements in a single place: do you want to change the padding for the button? You can do that in a single Component.
+* Would you like to replace your custom UI Kit with another one? You only need to update the individual components.
+
+
+-
