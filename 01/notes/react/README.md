@@ -299,5 +299,122 @@ Common self-closing tags:
 * br (line break)
 * hr (horizontal rule)
 * input
-In JSX you can not open an element without closing it. Is recommended to use the selg-closing tag syntax
+In JSX you can not open an element without closing it. Is recommended to use the selg-closing tag syntax `/>`
+```javascript
+const image = <img src="image.png" />
+```
+
+#### JSX Fragments
+You can only return 1 JSX element at a time. This element can have chiildren. That's because your are returning an Object, every element is an Object.
+React solves this by making you return a Fragment that wraps the elements that you want to return.
+```html
+<!-- You want to return this example: -->
+<h1>Grocery delivered to your door</h1>
+<h2>Free delivery</h2>
+<p>Get started now!</p>
+```
+```javascript
+function getHeroBanner() {
+    return (
+        <>
+            <h1>Grocery delivered to your door</h1>
+            <h2>Free delivery</h2>
+            <p>Get started now!</p>
+        </>
+    );
+}
+```
+Fragment is an internal representation in React that lets you wrap multiple elements.
+The original syntax is:
+```javascript
+function getHeroBanner() {
+    return (
+        <React.Fragment>
+            <h1>Grocery delivered to your door</h1>
+            <h2>Free delivery</h2>
+            <p>Get started now!</p>
+        </React.Fragment>
+    );
+}
+```
+
+### Components
+A React Component is a function that returns one React Element, which describes how a section of the User Interface should look. `Components promote code reuse.`
+Example:
+```javascript
+function Footer() {
+    return (
+        <div>
+            <h3>Company name</h3>
+            <p>All rights reserved</p>
+        </div>
+    );
+}
+```
+Then used with JSX:
+```javascript
+import {createRoot} from "react-dom/client";
+
+function Footer() {
+    return (
+        <div>
+            <h3>Company name</h3>
+            <p>All rights reserved</p>
+        </div>
+    );
+}
+
+const root = document.querySelector("#root");
+createRoot(root).render(<Footer></Footer>);
+```
+We call this a `function component` because the Component is defined as a function.
+
+#### UpperCamelCase Component Name
+The first character must be in upper case for it to be considered a Component.
+
+#### Components under the hood
+* Is it an uppercase letter? Then it's a Component.
+* Is it a lowercase letter? Then it's an Element.
+
+#### Element vs. Component?
+A React Component is a function that returns a React Element.
+
+#### Self-closing tags
+Just like with Elements, you can use the self-closing syntax for Components that do not have any children. So instead of writing `<Logo></Logo>` you can write: `<Logo />`.
+
+#### One Component per File
+It's recommended that the name of the file matches the name of the Component:
+* file: Footer.js for the Component Footer
+* file: AppNavbar.js for the Component AppNavbar
+
+Your app will still have an `index.js` which is the main entry point of your app (this is sometimes called `app.js`).
+Example:
+```javascript
+// Footer.js
+export default function Footer() {
+    return (
+        <>
+            <h3>Footer</h3>
+            <p>All rights reserved</p>
+        </>
+    );
+}
+```
+This file will export default the Footer component. This is required to be able to use the Footer component in other files:
+```javascript
+//index.js
+import {createRoot} from "react-dom/client";
+import Footer from "./Footer.js";
+
+function App() {
+    return (<>
+         <Footer />
+         <Footer />
+    </>);
+}
+
+const root = document.querySelector("#root");
+
+createRoot(root).render(<App />);
+```
 
