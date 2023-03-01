@@ -2,7 +2,7 @@
 
 Init React app:
 ```sh
-npm create vite@lates
+npm create vite@latest
 ```
 select **react**
 select **javascript**
