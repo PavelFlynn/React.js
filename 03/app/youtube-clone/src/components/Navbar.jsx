@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material'
+import { Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { logo } from '../utils/constants';
 import SearchBar from './SearchBar';
@@ -21,9 +21,7 @@ export default function Navbar() {
                 <img src={logo} alt="" height={45} />
             </Link>
 
-            <SearchBar>
-
-            </SearchBar>
+            <SearchBar />
 
         </Stack>
     )
