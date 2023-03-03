@@ -18,7 +18,7 @@ export default function SearchBar() {
             }}
         >
 
-            <input value='' placeholder='Search...' className='search-bar' onChange={() => {}} sx={{ border: 'none', background: 'none' }} />
+            <input type='text' value='' placeholder='Search...' className='search-bar' onChange={() => {}} style={{ border: 'none', background: 'none' }} />
             <IconButton type="submit" sx={{ p: '10px', color: 'red' }}>
                 <Search />
             </IconButton>

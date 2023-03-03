@@ -17,7 +17,12 @@ export default function SideBar() {
             }}
         >
             {categories.map(category => (
-                <button className='category-btn' key={category.name} style={{ backgroundColor: category.name === selectedCategory && '#FC1503' }}>
+                <button 
+                    className='category-btn' 
+                    key={category.name} 
+                    style={{ backgroundColor: category.name === selectedCategory && '#FC1503' }}
+                >
+                    
                     <span style={{ color: category.name === selectedCategory ? '#fff' : '#FC1503', marginRight: '15px' }}>{category.icon}</span>
                     <span>{category.name}</span>
                 </button>
