@@ -2,9 +2,7 @@ import { Stack } from '@mui/material';
 import { categories } from '../utils/constants';
 import '../css/sidebar.css';
 
-const selectedCategory = 'New';
-
-export default function SideBar() {
+export default function SideBar(props) {
 
     return (
         <Stack
@@ -19,11 +17,12 @@ export default function SideBar() {
             {categories.map(category => (
                 <button 
                     className='category-btn' 
+                    onClick={() => props.setSeLectedCategory(category.name)}
                     key={category.name} 
-                    style={{ backgroundColor: category.name === selectedCategory && '#FC1503' }}
+                    style={{ backgroundColor: category.name === props.seLectedCategory && '#FC1503' }}
                 >
                     
-                    <span style={{ color: category.name === selectedCategory ? '#fff' : '#FC1503', marginRight: '15px' }}>{category.icon}</span>
+                    <span style={{ color: category.name === props.seLectedCategory ? '#fff' : '#FC1503', marginRight: '15px' }}>{category.icon}</span>
                     <span>{category.name}</span>
                 </button>
             ))}

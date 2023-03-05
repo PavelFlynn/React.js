@@ -5,10 +5,11 @@ import { fetchFromAPI } from '../utils/fetchFromAPI';
 
 export default function Feed() {
 
-    const [selectedCategory, setselectedCategory] = useState('New')
+    const [selectedCategory, setselectedCategory] = useState(() => 'New');
+    const [videos, setvideos] = useState([]);
 
     useEffect(() => {
-        fetchFromAPI(`search?part=snippet&q=${selectedCategory}`);
+        fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) => setvideos(data.items));
     }, [selectedCategory]);
     
     return (
@@ -21,8 +22,8 @@ export default function Feed() {
                     px: { sx: 0, md: 2 }
                 }}
             >
-                
-                <SideBar />
+
+                <SideBar seLectedCategory={selectedCategory} setSeLectedCategory={setselectedCategory} />
 
                 <Typography variant='body2' sx={{ mt: 1.5, color: '#fff', fontSize: 12, textAlign: 'center' }} className='copyright'>
                     Copyright 2023 Youtube Clone
@@ -40,10 +41,10 @@ export default function Feed() {
             >
 
                 <Typography variant='h4' fontWeight='bold' mb={2} sx={{ color: 'white' }}>
-                    New <span style={{ color: '#F31503' }}>videos</span>
+                    {selectedCategory} <span style={{ color: '#F31503' }}>videos</span>
                 </Typography>
 
-                <Videos videos={[]} />
+                <Videos videos={[videos]} />
 
             </Box>
 
