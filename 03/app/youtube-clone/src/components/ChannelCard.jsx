@@ -7,6 +7,8 @@ export default function ChannelCard(props) {
 
     const data = props.channelDetail;
 
+    //console.log(props);
+
     return (
         <Box
             sx={{ 
@@ -17,11 +19,12 @@ export default function ChannelCard(props) {
                 justifyContent: 'center', 
                 alignItems: 'center',
                 borderRadius: 'none', 
-                boxShadow: '20px'
+                boxShadow: '20px',
+                marginTop: props.marginTop
             }}
         >
 
-            <Link to={data.id.channelId ? `/video/${data.id.channelId}` : demoChannelUrl}>
+            <Link to={data.id.channelId ? `/channel/${data.id.channelId}` : demoChannelUrl}>
 
                 <CardContent
                     sx={{
@@ -41,8 +44,16 @@ export default function ChannelCard(props) {
 
                     <Typography variant='h6'>
                         {data.snippet.channelTitle || demoChannelTitle}
-                        <CheckCircle sx={{ fontSize: '12px', color: 'gray', ml: '10px' }}/>
+                        <CheckCircle sx={{ fontSize: '14px', color: 'gray', ml: '5px' }}/>
                     </Typography>
+
+                    {/*
+                    {props.subscribers && (
+                        <Typography variant='subtitle2'>
+                            {parseInt(props.subscribers).toLocaleString()} Subscribers
+                        </Typography>
+                    )}
+                    */}
 
                 </CardContent>
 

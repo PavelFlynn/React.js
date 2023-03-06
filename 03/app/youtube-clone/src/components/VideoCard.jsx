@@ -28,7 +28,7 @@ export default function VideoCard(props) {
                     </Typography>
                 </Link>
 
-                <Link to={data.id.channelId ? `/video/${data.id.channelId}` : demoChannelUrl}>
+                <Link to={data.id.channelId ? `/channel/${data.id.channelId}` : demoChannelUrl}>
                     <Typography variant='subtitle2' fontWeight='bold' color='gray'>
                         {data.snippet.channelTitle || demoChannelTitle}
                         <CheckCircle sx={{ fontSize: '12px', color: 'gray', ml: '10px' }}/>
