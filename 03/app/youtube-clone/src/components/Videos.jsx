@@ -3,7 +3,9 @@ import { VideoCard, ChannelCard } from './';
 
 export default function Videos(props) {
 
-    const loopProps = props.videos[0];
+    const loopProps = props.videos;
+
+    if (!loopProps?.length) return 'Loading...';
 
     return (
         <Stack
