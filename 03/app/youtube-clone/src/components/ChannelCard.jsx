@@ -6,8 +6,7 @@ import { demoChannelUrl, demoChannelTitle } from '../utils/constants';
 export default function ChannelCard(props) {
 
     const data = props.channelDetail;
-
-    //console.log(props);
+    //const { channelDetail } = props;
 
     return (
         <Box
@@ -24,7 +23,7 @@ export default function ChannelCard(props) {
             }}
         >
 
-            <Link to={data.id.channelId ? `/channel/${data.id.channelId}` : demoChannelUrl}>
+            <Link to={data?.id?.channelId ? `/channel/${data?.id?.channelId}` : demoChannelUrl}>
 
                 <CardContent
                     sx={{
@@ -37,23 +36,21 @@ export default function ChannelCard(props) {
                 >
 
                     <CardMedia
-                        image={data.snippet.thumbnails.high.url}
-                        alt={data.snippet.title}
+                        image={data?.snippet?.thumbnails?.high?.url}
+                        alt={data?.snippet?.title}
                         sx={{ borderRadius: '50%', width: 180, height: 180, mb: 2, border: '1px solid #e3e3e3' }}
                     />
 
                     <Typography variant='h6'>
-                        {data.snippet.channelTitle || demoChannelTitle}
+                        {data?.snippet?.channelTitle || demoChannelTitle}
                         <CheckCircle sx={{ fontSize: '14px', color: 'gray', ml: '5px' }}/>
                     </Typography>
 
-                    {/*
-                    {props.subscribers && (
+                    {data?.statistics?.subscriberCount && (
                         <Typography variant='subtitle2'>
-                            {parseInt(props.subscribers).toLocaleString()} Subscribers
+                            {parseInt(data?.statistics?.subscriberCount).toLocaleString()} Subscribers
                         </Typography>
                     )}
-                    */}
 
                 </CardContent>
 

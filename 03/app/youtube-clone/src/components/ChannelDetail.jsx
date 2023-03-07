@@ -13,8 +13,8 @@ export default function ChannelDetail() {
     const { id } = useParams();
 
     useEffect(() => {
-        fetchFromAPI(`channels?part=snippet&id=${id}`).then((data) => setchannelDetail(data.items[0]));
-        fetchFromAPI(`search?part=snippet&channelId=${id}&order=date`).then((data) => setVideos(data.items));
+        fetchFromAPI(`channels?part=snippet&id=${id}`).then((data) => setchannelDetail(data?.items[0]));
+        fetchFromAPI(`search?part=snippet&channelId=${id}&order=date`).then((data) => setVideos(data?.items));
     }, [id]);
 
     return (

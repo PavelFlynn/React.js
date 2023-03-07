@@ -10,11 +10,11 @@ export default function VideoCard(props) {
     return (
         <Card sx={{ width: { md: '320px', xs: '100%' }, boxShadow: 'none', borderRadius: 0 }}>
 
-            <Link to={data.id.videoId ? `/video/${data.id.videoId}` : demoVideoUrl}>
+            <Link to={data?.id?.videoId ? `/video/${data?.id?.videoId}` : demoVideoUrl}>
 
                 <CardMedia
-                    image={data.snippet.thumbnails.high.url}
-                    alt={data.snippet.title}
+                    image={data?.snippet?.thumbnails?.high?.url}
+                    alt={data?.snippet?.title}
                     sx={{ width: 358, height: 180 }}
                 />
 
@@ -22,15 +22,15 @@ export default function VideoCard(props) {
 
             <CardContent sx={{ backgroundColor: '#1e1e1e', height: '100px' }}>
 
-                <Link to={data.id.videoId ? `/video/${data.id.videoId}` : demoVideoUrl}>
+                <Link to={data?.id?.videoId ? `/video/${data?.id?.videoId}` : demoVideoUrl}>
                     <Typography variant='subtitle1' fontWeight='bold' color='#fff'>
-                        {data.snippet.title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
+                        {data?.snippet?.title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
                     </Typography>
                 </Link>
 
-                <Link to={data.id.channelId ? `/channel/${data.id.channelId}` : demoChannelUrl}>
+                <Link to={data?.id?.channelId ? `/channel/${data?.id?.channelId}` : demoChannelUrl}>
                     <Typography variant='subtitle2' fontWeight='bold' color='gray'>
-                        {data.snippet.channelTitle || demoChannelTitle}
+                        {data?.snippet?.channelTitle || demoChannelTitle}
                         <CheckCircle sx={{ fontSize: '12px', color: 'gray', ml: '10px' }}/>
                     </Typography>
                 </Link>
