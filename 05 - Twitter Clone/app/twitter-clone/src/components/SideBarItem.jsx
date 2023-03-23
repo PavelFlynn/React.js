@@ -10,9 +10,9 @@ export default function SideBarItem() {
                 
                 {sideBar.map(item => (
                     <Link to={item.href} key={item.label}>
-                        <div className='relative m-4 py-2 px-4 rounded-full hover:bg-stone-800 transition'>
-                            <button className='relative flex justify-start items-center'>
-                                <span className='text-2xl mx-1 text-gray-50'>{item.icon}</span>
+                        <div className='relative m-4 py-3 px-4 rounded-full lg:hover:bg-stone-800 transition'>
+                            <button className='relative flex justify-start items-center box-border'>
+                                <span className='text-2xl mx-1 text-gray-50 max-lg:mx-3'>{item.icon}</span>
                                 <span className='mx-1 text-base text-gray-50 max-lg:hidden'>{item.label}</span>
                             </button>
                         </div>
@@ -20,9 +20,9 @@ export default function SideBarItem() {
                 ))}
 
                 <Link to='/logout'>
-                    <div className='relative m-4 py-2 px-4 rounded-full hover:bg-stone-800 transition'>
+                    <div className='relative m-4 py-3 px-4 rounded-full lg:hover:bg-stone-800 transition'>
                         <button className='relative flex justify-start items-center'>
-                            <span className='text-2xl mx-1 text-gray-50'>{<FiLogOut />}</span>
+                            <span className='text-2xl mx-1 text-gray-50 max-lg:mx-3'>{<FiLogOut />}</span>
                             <span className='mx-1 text-base text-gray-50 max-lg:hidden'>Logout</span>
                         </button>
                     </div>
