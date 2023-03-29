@@ -1,7 +1,63 @@
-import { Checkbox } from '@mui/material';
+import { Checkbox, TextField } from '@mui/material';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 
 export default function ListItem(props) {
+
+    function checkCompleteItem(id) {
+        const updateItems = props.items.map(item => {
+            if (item.id === id) {
+                item.isCompleted = !item.isCompleted;
+            }
+
+            return item;
+        });
+
+        props.setItems(updateItems);
+    }
+
+    function setEditItem(id) {
+        const editItems = props.items.map(item => {
+            if (item.id === id) {
+                item.isEdited = true;
+            }
+
+            return item;
+        });
+
+        props.setItems(editItems);
+    }
+
+    function updateTitleItem(event, id) {
+        const editItems = props.items.map(item => {
+            if (item.id === id) {
+
+                // Do not Add empty items
+                if (event.target.value.trim().length === 0) {
+                    item.isEdited = false;
+                    return item;
+                }
+
+                item.title = event.target.value;
+                item.isEdited = false;
+            }
+
+            return item;
+        });
+
+        props.setItems(editItems);
+    }
+
+    function cancelEditItem(id) {
+        const editItems = props.items.map(item => {
+            if (item.id === id) {
+                item.isEdited = false;
+            }
+
+            return item;
+        });
+
+        props.setItems(editItems);
+    }
 
     function deleteItem(id) {
         props.setItems([...props.items].filter(item => item.id !== id));
@@ -12,12 +68,38 @@ export default function ListItem(props) {
 
             {props.items.map(item => (
             <div className='relative flex justify-between items-center my-2' key={item.id}>
+
                 <div className='relative flex-grow-0 flex-shrink basis-11 text-cente'>
-                    <Checkbox />
+                    <Checkbox onChange={() => checkCompleteItem(item.id)} />
                 </div>
+
                 <div className='relative flex-1 px-1 text-left'>
-                    <p className={item.isCompleted ? 'line-through' : null}>{item.title}</p>
+                    {!item.isEdited ? (
+                    <p 
+                        onDoubleClick={() => setEditItem(item.id)}
+                        className={`cursor-pointer ${item.isCompleted ? 'line-through' : null}`}>{item.title}
+                    </p>
+                    ) : (
+                    <TextField 
+                        onBlur={(event) => updateTitleItem(event, item.id)}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter') {
+                                updateTitleItem(event, item.id)
+                            } else if (event.key === 'Escape') {
+                                cancelEditItem(item.id)
+                            }
+                        }}
+                        id='outlined-basic'
+                        defaultValue={item.title}
+                        label={item.title}
+                        variant='outlined'
+                        fullWidth
+                        size='small'
+                        autoFocus
+                    />
+                    )}
                 </div>
+
                 <div className='relative flex-grow-0 flex-shrink basis-8 text-cente'>
                     <ClearOutlinedIcon
                         onClick={() => deleteItem(item.id)}
@@ -34,6 +116,7 @@ export default function ListItem(props) {
                         }}
                     />
                 </div>
+                
             </div>
             ))}
 

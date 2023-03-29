@@ -7,12 +7,14 @@ export default function Layout() {
         {
             id: 1,
             title: 'Fist To do Item',
-            isCompleted: false
+            isCompleted: false,
+            isEdited: false
         },
         {
             id: 2,
             title: 'Second To do Item',
-            isCompleted: false
+            isCompleted: false,
+            isEdited: false
         },
     ]);
     
