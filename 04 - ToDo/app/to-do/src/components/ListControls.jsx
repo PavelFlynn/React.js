@@ -1,76 +1,56 @@
-import { Button } from '@mui/material';
+import { ButtonGroup, Button } from '@mui/material';
 
-export default function ListControls() {
+export default function ListControls(props) {
 
     return (
+        <>
+        {props.items.length > 0 && (
         <div className='relative my-1 py-2 border-t border-solid border-slate-300'>
             <div className='relative flex justify-between items-center my-2'>
 
                 <div>
                     <div className='relative flex justify-start items-center'>
-                        <Button 
-                        onClick={ () => alert('clicked') }
-                        variant='outlined' 
-                        size='small'
-                        sx={{ 
-                            color: 'rgb(100 116 139)',
-                            textTransform: 'capitalize',
-                            borderRadius: '8px',
-                            border: '1px solid rgb(148 163 184)',
-                            '&:focus': {
-                                border: '1px solid rgb(148 163 184)'
-                            },
-                            '&:active': {
-                                border: '1px solid rgb(148 163 184)',
-                                background: 'none'
-                            }
-                        }}
-                    >
-                        All
-                    </Button>
+                        <ButtonGroup 
+                            variant='outlined' 
+                            aria-label='outlined button group' 
+                            size='small'
+                        >
+                            
+                            <Button 
+                                onClick={ () => alert('clicked') }
+                                sx={{ 
+                                    color: 'rgb(100 116 139)',
+                                    textTransform: 'capitalize',
+                                    border: '1px solid rgb(148 163 184)',
+                                    borderRadius: '8px',
+                                }}
+                            >
+                            All
+                            </Button>
 
-                    <Button 
-                        onClick={ () => alert('clicked') }
-                        variant='outlined' 
-                        size='small'
-                        sx={{ 
-                            margin: '0 5px',
-                            color: 'rgb(100 116 139)',
-                            textTransform: 'capitalize',
-                            borderRadius: '8px',
-                            border: 'none',
-                            '&:focus': {
-                                border: '1px solid rgb(148 163 184)'
-                            },
-                            '&:active': {
-                                border: '1px solid rgb(148 163 184)',
-                                background: 'none'
-                            }
-                        }}
-                    >
-                        Active
-                    </Button>
+                            <Button 
+                                onClick={ () => alert('clicked') }
+                                sx={{ 
+                                    color: 'rgb(100 116 139)',
+                                    textTransform: 'capitalize',
+                                    border: '1px solid rgb(148 163 184)'
+                                }}
+                            >
+                            Active
+                            </Button>
 
-                    <Button 
-                        onClick={ () => alert('clicked') }
-                        variant='outlined' 
-                        size='small'
-                        sx={{ 
-                            color: 'rgb(100 116 139)',
-                            textTransform: 'capitalize',
-                            borderRadius: '8px',
-                            border: 'none',
-                            '&:focus': {
-                                border: '1px solid rgb(148 163 184)'
-                            },
-                            '&:active': {
-                                border: '1px solid rgb(148 163 184)',
-                                background: 'none'
-                            }
-                        }}
-                    >
-                        Completed
-                    </Button>
+                            <Button 
+                                onClick={ () => alert('clicked') }
+                                sx={{ 
+                                    color: 'rgb(100 116 139)',
+                                    textTransform: 'capitalize',
+                                    border: '1px solid rgb(148 163 184)',
+                                    borderRadius: '8px',
+                                }}
+                            >
+                            Completed
+                            </Button>
+                        </ButtonGroup>
                     </div>
                 </div>
 
@@ -83,14 +63,7 @@ export default function ListControls() {
                             color: 'rgb(100 116 139)',
                             textTransform: 'capitalize',
                             borderRadius: '8px',
-                            border: '1px solid rgb(148 163 184)',
-                            '&:focus': {
-                                border: '1px solid rgb(148 163 184)'
-                            },
-                            '&:active': {
-                                border: '1px solid rgb(148 163 184)',
-                                background: 'none'
-                            }
+                            border: '1px solid rgb(148 163 184)'
                         }}
                     >
                         Clear completed
@@ -99,5 +72,7 @@ export default function ListControls() {
 
             </div>
         </div>
+        )}
+        </>
     )
 }

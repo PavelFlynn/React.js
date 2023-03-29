@@ -25,8 +25,8 @@ export default function Layout() {
                 <Header label='Todo App' />
                 <Input items={todos} setItems={setTodos} />
                 <ListItem items={todos} setItems={setTodos} />
-                <ListCheck />
-                <ListControls />
+                <ListCheck items={todos} />
+                <ListControls items={todos} />
 
             </div>
         </div>
