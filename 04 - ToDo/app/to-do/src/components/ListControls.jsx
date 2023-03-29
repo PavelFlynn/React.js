@@ -2,6 +2,10 @@ import { ButtonGroup, Button } from '@mui/material';
 
 export default function ListControls(props) {
 
+    function clearItems() {
+        props.setItems([...props.items].filter(item => !item.isCompleted));
+    }
+
     return (
         <>
         {props.items.length > 0 && (
@@ -17,35 +21,38 @@ export default function ListControls(props) {
                         >
                             
                             <Button 
-                                onClick={ () => alert('clicked') }
+                                onClick={ () => props.setItemFilter('all') }
                                 sx={{ 
-                                    color: 'rgb(100 116 139)',
+                                    color: props.itemFilter === 'all' ? '#22c55e' : 'rgb(100 116 139)',
                                     textTransform: 'capitalize',
                                     border: '1px solid rgb(148 163 184)',
                                     borderRadius: '8px',
+                                    borderColor: props.itemFilter === 'all' ? '#22c55e' : 'rgb(148 163 184)'
                                 }}
                             >
                             All
                             </Button>
 
                             <Button 
-                                onClick={ () => alert('clicked') }
+                                onClick={ () => props.setItemFilter('active') }
                                 sx={{ 
-                                    color: 'rgb(100 116 139)',
+                                    color: props.itemFilter === 'active' ? '#22c55e' : 'rgb(100 116 139)',
                                     textTransform: 'capitalize',
-                                    border: '1px solid rgb(148 163 184)'
+                                    border: '1px solid rgb(148 163 184)',
+                                    borderColor: props.itemFilter === 'active' ? '#22c55e' : 'rgb(148 163 184)'
                                 }}
                             >
                             Active
                             </Button>
 
                             <Button 
-                                onClick={ () => alert('clicked') }
+                                onClick={ () => props.setItemFilter('completed') }
                                 sx={{ 
-                                    color: 'rgb(100 116 139)',
+                                    color: props.itemFilter === 'completed' ? '#22c55e' : 'rgb(100 116 139)',
                                     textTransform: 'capitalize',
                                     border: '1px solid rgb(148 163 184)',
                                     borderRadius: '8px',
+                                    borderColor: props.itemFilter === 'completed' ? '#22c55e' : 'rgb(148 163 184)'
                                 }}
                             >
                             Completed
@@ -56,7 +63,7 @@ export default function ListControls(props) {
 
                 <div>
                     <Button 
-                        onClick={ () => alert('clicked') }
+                        onClick={clearItems}
                         variant='outlined' 
                         size='small'
                         sx={{ 

@@ -17,6 +17,17 @@ export default function Layout() {
             isEdited: false
         },
     ]);
+
+    const [filter, setFilter] = useState('all');
+    function filterItems(filter) {
+        if (filter === 'active') {
+            return todos.filter(item => !item.isCompleted);
+        } else if (filter === 'completed') {
+            return todos.filter(item => item.isCompleted);
+        } else {
+            return todos;
+        }
+    }
     
     return (
         <div className='relative flex flex-col justify-center items-center h-screen'>
@@ -24,9 +35,9 @@ export default function Layout() {
 
                 <Header label='Todo App' />
                 <Input items={todos} setItems={setTodos} />
-                <ListItem items={todos} setItems={setTodos} />
-                <ListCheck items={todos} />
-                <ListControls items={todos} />
+                <ListItem items={todos} setItems={setTodos} itemFilter={filter} itemFilterItems={filterItems} />
+                <ListCheck items={todos} setItems={setTodos} />
+                <ListControls items={todos} setItems={setTodos} itemFilter={filter} setItemFilter={setFilter} />
 
             </div>
         </div>

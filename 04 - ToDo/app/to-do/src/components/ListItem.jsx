@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Checkbox, TextField } from '@mui/material';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 
@@ -66,7 +67,7 @@ export default function ListItem(props) {
     return (
         <div className='relative my-4'>
 
-            {props.items.map(item => (
+            {props.itemFilterItems(props.itemFilter).map(item => (
             <div className='relative flex justify-between items-center my-2' key={item.id}>
 
                 <div className='relative flex-grow-0 flex-shrink basis-11 text-cente'>
@@ -75,11 +76,14 @@ export default function ListItem(props) {
 
                 <div className='relative flex-1 px-1 text-left'>
                     {!item.isEdited ? (
+
                     <p 
                         onDoubleClick={() => setEditItem(item.id)}
                         className={`cursor-pointer ${item.isCompleted ? 'line-through' : null}`}>{item.title}
                     </p>
+
                     ) : (
+                        
                     <TextField 
                         onBlur={(event) => updateTitleItem(event, item.id)}
                         onKeyDown={(event) => {

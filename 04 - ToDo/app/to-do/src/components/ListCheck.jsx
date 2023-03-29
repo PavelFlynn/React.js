@@ -4,6 +4,20 @@ import { AutoFixHighOutlined } from '@mui/icons-material';
 
 export default function ListCheck(props) {
 
+    function checkAllItems() {
+        const checkAll = props.items.map(item => {
+            item.isCompleted = true;
+            return item;
+        });
+
+        props.setItems(checkAll);
+    }
+
+    function itemsRemaining() {
+        const remaining = props.items.filter(item => item.isCompleted === false);
+        return remaining.length;
+    }
+
     return (
         <>
         {props.items.length > 0 ? (
@@ -11,7 +25,7 @@ export default function ListCheck(props) {
             <div className='relative flex justify-between items-center my-2'>
                 <div>
                     <Button 
-                        onClick={ () => alert('clicked') }
+                        onClick={checkAllItems}
                         variant='outlined' 
                         size='small'
                         sx={{ 
@@ -25,7 +39,11 @@ export default function ListCheck(props) {
                     </Button>
                 </div>
                 <div>
-                    <p className='text-sm text-slate-500'>{props.items.length} {(props.items.length > 1) ? 'items' : 'item'} remaining</p>
+                    {itemsRemaining() > 0 ? (
+                    <p className='text-sm text-slate-500'>{itemsRemaining()} {(itemsRemaining() > 1) ? 'items' : 'item'} remaining</p>
+                    ) : (
+                    <p className='text-sm text-slate-500'>All tasks Completed!</p>
+                    )}
                 </div>
             </div>
         </div>
