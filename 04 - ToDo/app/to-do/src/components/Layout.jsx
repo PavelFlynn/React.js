@@ -18,6 +18,7 @@ export default function Layout() {
         },
     ]);
 
+    // Set Filter for List Controls [All/Active/Completed]
     const [filter, setFilter] = useState('all');
     function filterItems(filter) {
         if (filter === 'active') {

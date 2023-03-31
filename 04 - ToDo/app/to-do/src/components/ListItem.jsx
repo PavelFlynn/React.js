@@ -4,6 +4,7 @@ import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 
 export default function ListItem(props) {
 
+    // Checkbox for Completed Item
     function checkCompleteItem(id) {
         const updateItems = props.items.map(item => {
             if (item.id === id) {
@@ -16,6 +17,7 @@ export default function ListItem(props) {
         props.setItems(updateItems);
     }
 
+    // Set Edit mode for selected Item
     function setEditItem(id) {
         const editItems = props.items.map(item => {
             if (item.id === id) {
@@ -28,6 +30,7 @@ export default function ListItem(props) {
         props.setItems(editItems);
     }
 
+    // Update Item from Edit mode
     function updateTitleItem(event, id) {
         const editItems = props.items.map(item => {
             if (item.id === id) {
@@ -48,6 +51,7 @@ export default function ListItem(props) {
         props.setItems(editItems);
     }
 
+    // Cancel Edit mode
     function cancelEditItem(id) {
         const editItems = props.items.map(item => {
             if (item.id === id) {
@@ -60,6 +64,7 @@ export default function ListItem(props) {
         props.setItems(editItems);
     }
 
+    // Delete Item from List
     function deleteItem(id) {
         props.setItems([...props.items].filter(item => item.id !== id));
     }

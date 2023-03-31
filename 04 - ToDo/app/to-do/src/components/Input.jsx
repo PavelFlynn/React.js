@@ -10,6 +10,7 @@ export default function Input(props) {
         setinputValue(event.target.value);
     }
 
+    // Add a new item to the List
     function addItem(event) {
         event.preventDefault();
 
@@ -33,7 +34,7 @@ export default function Input(props) {
 
     return (
         <div className='relative'>
-            <form action='#' onSubmit={ addItem }>
+            <form action='#' onSubmit={addItem}>
                 <TextField 
                     onChange={handleInput}
                     id='outlined-basic'

@@ -2,6 +2,7 @@ import { ButtonGroup, Button } from '@mui/material';
 
 export default function ListControls(props) {
 
+    // Clear completed Items from List
     function clearItems() {
         props.setItems([...props.items].filter(item => !item.isCompleted));
     }

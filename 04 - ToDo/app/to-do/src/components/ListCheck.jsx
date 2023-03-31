@@ -4,6 +4,7 @@ import { AutoFixHighOutlined } from '@mui/icons-material';
 
 export default function ListCheck(props) {
 
+    // Check all items as completed
     function checkAllItems() {
         const checkAll = props.items.map(item => {
             item.isCompleted = true;
@@ -13,6 +14,7 @@ export default function ListCheck(props) {
         props.setItems(checkAll);
     }
 
+    // Check Items remaining for string legend
     function itemsRemaining() {
         const remaining = props.items.filter(item => item.isCompleted === false);
         return remaining.length;
