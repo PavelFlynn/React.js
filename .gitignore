@@ -35,4 +35,6 @@ dist-ssr
 *.sln
 *.sw?
 
-**/02 - Sass Integration/
+**/03 - Youtube Clone/
+**/04 - ToDo/
+**/05 - Twitter Clone/
